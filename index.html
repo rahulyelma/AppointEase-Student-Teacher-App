@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unified Mentor: Appointment Booking</title>
+    <!-- Favicon for browser tab -->
+    <link rel="icon" href="https://placehold.co/32x32/007bff/ffffff?text=UM" type="image/x-icon">
+    <!-- Link to external Tailwind CSS CDN -->
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+    <!-- Link to your custom CSS file for additional styles and font -->
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body class="flex flex-col items-center justify-start min-h-screen bg-gray-100 p-4 sm:p-6 lg:p-8">
+    <div class="main-container bg-white rounded-2xl shadow-xl p-6 sm:p-8 md:p-10 w-full max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-4xl mx-auto my-8">
+        <header class="text-center mb-8">
+            <!-- Project Logo/Icon - Placeholder image for now -->
+            <img src="https://placehold.co/120x120/007bff/ffffff/png?text=UM" alt="Unified Mentor Logo" class="mx-auto mb-4 rounded-full shadow-md">
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-2 leading-tight">Unified Mentor</h1>
+            <p class="text-lg sm:text-xl text-gray-600">Your Skill. Success & Journey</p>
+        </header>
+
+        <!-- Dynamic content will be loaded here based on user state and role -->
+        <div id="app-container">
+            <!-- Initial content will be the login/registration form -->
+            <div id="auth-view" class="p-4 sm:p-6">
+                <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800 mb-6 text-center">Welcome! Please Login or Register</h2>
+                
+                <!-- Login Form -->
+                <div id="login-form-container" class="mb-8 p-6 bg-blue-50 rounded-lg shadow-inner">
+                    <h3 class="text-xl sm:text-2xl font-medium text-blue-800 mb-4 text-center">Login to Your Account</h3>
+                    <form id="login-form" class="space-y-4">
+                        <div>
+                            <label for="login-email" class="label-field">Email Address:</label>
+                            <input type="email" id="login-email" class="input-field" placeholder="your.email@example.com" required autocomplete="email">
+                        </div>
+                        <div>
+                            <label for="login-password" class="label-field">Password:</label>
+                            <input type="password" id="login-password" class="input-field" placeholder="••••••••" required autocomplete="current-password">
+                        </div>
+                        <button type="submit" class="btn-primary w-full py-3 text-lg">Log In</button>
+                    </form>
+                    <p class="text-center text-sm text-gray-600 mt-4">
+                        Don't have an account? <a href="#" id="show-register" class="text-blue-600 hover:underline font-medium">Register here</a>
+                    </p>
+                    <p class="text-center text-sm text-gray-600 mt-2">
+                        <a href="#" id="show-forgot-password" class="text-blue-600 hover:underline font-medium">Forgot Password?</a>
+                    </p>
+                </div>
+
+                <!-- Registration Form (initially hidden) -->
+                <div id="register-form-container" class="hidden p-6 bg-green-50 rounded-lg shadow-inner">
+                    <h3 class="text-xl sm:text-2xl font-medium text-green-800 mb-4 text-center">Create a New Account</h3>
+                    <form id="register-form" class="space-y-4">
+                        <div>
+                            <label for="register-email" class="label-field">Email Address:</label>
+                            <input type="email" id="register-email" class="input-field" placeholder="your.email@example.com" required autocomplete="email">
+                        </div>
+                        <div>
+                            <label for="register-password" class="label-field">Password:</label>
+                            <input type="password" id="register-password" class="input-field" placeholder="Minimum 6 characters" required autocomplete="new-password">
+                        </div>
+                        <div>
+                            <label for="register-role" class="label-field">Register as:</label>
+                            <select id="register-role" class="input-field" required>
+                                <option value="">Select Your Role</option>
+                                <option value="student">Student</option>
+                                <option value="teacher">Teacher</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-primary w-full py-3 text-lg">Register</button>
+                    </form>
+                    <p class="text-center text-sm text-gray-600 mt-4">
+                        Already have an account? <a href="#" id="show-login" class="text-blue-600 hover:underline font-medium">Login here</a>
+                    </p>
+                </div>
+
+                <!-- Forgot Password Form (initially hidden) -->
+                <div id="forgot-password-container" class="hidden p-6 bg-yellow-50 rounded-lg shadow-inner">
+                    <h3 class="text-xl sm:text-2xl font-medium text-yellow-800 mb-4 text-center">Reset Your Password</h3>
+                    <form id="forgot-password-form" class="space-y-4">
+                        <div>
+                            <label for="forgot-email" class="label-field">Email Address:</label>
+                            <input type="email" id="forgot-email" class="input-field" placeholder="your.email@example.com" required autocomplete="email">
+                        </div>
+                        <button type="submit" class="btn-primary w-full py-3 text-lg">Send Reset Link</button>
+                    </form>
+                    <p class="text-center text-sm text-gray-600 mt-4">
+                        <a href="#" id="back-to-login" class="text-blue-600 hover:underline font-medium">Back to Login</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Main application dashboards (initially hidden) -->
+            <div id="dashboard-view" class="hidden p-4 sm:p-6">
+                <nav class="flex flex-col sm:flex-row justify-between items-center mb-8 pb-4 border-b border-gray-200">
+                    <h2 id="welcome-message" class="text-2xl sm:text-3xl font-semibold text-gray-800 mb-4 sm:mb-0">Welcome, User!</h2>
+                    <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4 w-full sm:w-auto">
+                        <span id="current-user-id" class="text-sm text-gray-500 hidden bg-gray-100 px-3 py-1 rounded-full"></span>
+                        <button id="logout-button" class="btn-secondary w-full sm:w-auto py-2">Logout</button>
+                    </div>
+                </nav>
+                
+                <!-- Role-specific content will be loaded here -->
+                <div id="admin-dashboard" class="hidden"></div>
+                <div id="teacher-dashboard" class="hidden"></div>
+                <div id="student-dashboard" class="hidden"></div>
+            </div>
+        </div>
+
+        <!-- Custom Modal for Alerts/Confirmations -->
+        <div id="custom-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header" id="modal-header"></div>
+                <div class="modal-body" id="modal-body"></div>
+                <div class="modal-footer" id="modal-footer" class="flex justify-center space-x-4">
+                    <button id="modal-confirm-btn" class="btn-primary hidden">Confirm</button>
+                    <button id="modal-cancel-btn" class="btn-secondary hidden">Cancel</button>
+                    <button id="modal-ok-btn" class="btn-primary">OK</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div id="loading-spinner" class="modal hidden">
+            <div class="modal-content flex flex-col items-center">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mb-4"></div>
+                <p class="text-gray-700 text-lg font-medium">Loading...</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Link to your main JavaScript file -->
+    <script type="module" src="main.js"></script>
+</body>
+</html>
