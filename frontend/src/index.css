@@ -1,0 +1,6 @@
+        /* This file serves as the input for the Tailwind CSS CLI. */
+        /* It contains the Tailwind directives to generate the utility classes. */
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+        

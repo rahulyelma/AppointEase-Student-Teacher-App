@@ -1,0 +1,215 @@
+/* Import Google Font - Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* Base Body Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    /* Tailwind classes in HTML handle most of this: flex flex-col items-center justify-start min-h-screen bg-gray-100 p-4 sm:p-6 lg:p-8 */
+    /* Ensure no default margins/paddings interfere */
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Main Container Styling */
+/* Tailwind classes in HTML handle most of this: bg-white rounded-2xl shadow-xl p-6 sm:p-8 md:p-10 w-full max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-4xl mx-auto my-8 */
+/* No additional custom CSS needed here as Tailwind covers it */
+
+/* Button Styles (using Tailwind's @apply for consistency with HTML) */
+.btn-primary {
+    background-color: #2563eb; /* Tailwind bg-blue-600 */
+    color: #fff; /* Tailwind text-white */
+    padding-left: 1rem; /* Tailwind px-4 */
+    padding-right: 1rem;
+    padding-top: 0.5rem; /* Tailwind py-2 */
+    padding-bottom: 0.5rem;
+    border-radius: 0.5rem; /* Tailwind rounded-lg */
+    box-shadow: 0 1px 6px rgba(30, 64, 175, 0.15); /* Tailwind shadow-md */
+    transition: background-color 0.3s ease-in-out;
+}
+.btn-primary:hover {
+    background-color: #1d4ed8; /* Tailwind hover:bg-blue-700 */
+}
+
+.btn-secondary {
+    background-color: #d1d5db; /* Tailwind bg-gray-300 */
+    color: #1f2937; /* Tailwind text-gray-800 */
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 6px rgba(30, 41, 59, 0.10);
+    transition: background-color 0.3s ease-in-out;
+}
+.btn-secondary:hover {
+    background-color: #9ca3af; /* Tailwind hover:bg-gray-400 */
+}
+
+.btn-danger {
+    background-color: #dc2626; /* Tailwind bg-red-600 */
+    color: #fff;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 6px rgba(220, 38, 38, 0.15);
+    transition: background-color 0.3s ease-in-out;
+}
+.btn-danger:hover {
+    background-color: #b91c1c; /* Tailwind hover:bg-red-700 */
+}
+
+/* Input Field Styles */
+.input-field {
+    width: 100%;
+    padding-left: 0.75rem; /* Tailwind px-3 */
+    padding-right: 0.75rem;
+    padding-top: 0.5rem; /* Tailwind py-2 */
+    padding-bottom: 0.5rem;
+    border: 1px solid #d1d5db; /* Tailwind border-gray-300 */
+    border-radius: 0.5rem; /* Tailwind rounded-lg */
+    outline: none;
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+.input-field:focus {
+    box-shadow: 0 0 0 2px #3b82f6; /* Tailwind focus:ring-2 focus:ring-blue-500 */
+    border-color: #3b82f6;
+}
+
+/* Label Field Styles */
+.label-field {
+    display: block;
+    color: #374151; /* Tailwind text-gray-700 */
+    font-size: 0.875rem; /* Tailwind text-sm */
+    font-weight: 700; /* Tailwind font-bold */
+    margin-bottom: 0.5rem; /* Tailwind mb-2 */
+}
+
+/* Custom Modal Styles */
+.modal {
+    position: fixed;
+    z-index: 1000; /* Ensure modal is on top of other content */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Slightly darker overlay for better contrast */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Use Tailwind's hidden class to control visibility via JS */
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 1rem; /* Rounded corners */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* Enhanced shadow */
+    max-width: 500px; /* Max width for desktop */
+    width: 90%; /* Responsive width */
+    text-align: center;
+    position: relative;
+    transform: translateY(-20px); /* Slight animation effect on appearance */
+    opacity: 0;
+    animation: fadeInSlideUp 0.3s ease-out forwards; /* Animation for modal entry */
+}
+
+/* Animation for modal content */
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    font-size: 1.75rem; /* Larger header */
+    font-weight: 700; /* Bold */
+    margin-bottom: 1rem;
+    color: #2c3e50; /* Darker text for header */
+}
+
+.modal-body {
+    font-size: 1.1rem; /* Slightly larger body text */
+    margin-bottom: 1.5rem;
+    color: #34495e; /* Standard text color */
+    line-height: 1.6;
+}
+
+.modal-footer button {
+    margin: 0 0.75rem; /* More spacing between buttons */
+    padding: 0.75rem 1.5rem; /* Larger padding for easier tapping */
+    font-size: 1rem;
+}
+
+/* Loading Spinner Specific Styles */
+#loading-spinner .modal-content {
+    background: none; /* No background for spinner modal content */
+    box-shadow: none; /* No shadow for spinner modal content */
+    padding: 0;
+    animation: none; /* Remove modal entry animation for spinner */
+    transform: none; /* Remove transform for spinner */
+}
+
+/* Spinner animation */
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    body {
+        padding: 10px; /* Less padding on very small screens */
+    }
+    .main-container {
+        padding: 1.5rem; /* Adjust padding for smaller containers */
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    .modal-content {
+        padding: 1.5rem;
+        width: 95%; /* Take more width on small screens */
+    }
+    .modal-header {
+        font-size: 1.5rem;
+    }
+    .modal-body {
+        font-size: 1rem;
+    }
+    .modal-footer button {
+        margin: 0.5rem 0.25rem; /* Adjust button margin for smaller screens */
+        width: calc(50% - 0.5rem); /* Make buttons take half width */
+    }
+    /* Adjust flex direction for dashboard navigation on small screens */
+    #dashboard-view nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    #dashboard-view nav h2 {
+        margin-bottom: 1rem;
+    }
+    #dashboard-view nav > div {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        /* Add back vertical spacing: use margin-bottom on child elements if needed */
+        /* Remove horizontal spacing: ensure no margin-right/left on child elements */
+    }
+    #dashboard-view nav button {
+        width: 100%; /* Full width buttons */
+    }
+}
